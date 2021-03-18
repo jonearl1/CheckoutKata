@@ -1,4 +1,5 @@
 using CheckoutKata.src;
+using CheckoutKata.src.Repository;
 using NUnit.Framework;
 
 namespace CheckoutKata
@@ -13,7 +14,7 @@ namespace CheckoutKata
         [Test]
         public void CheckoutTest()
         {
-            ICheckout checkout = new Checkout();
+            ICheckout checkout = new Checkout(new ItemRepository());
             checkout.Scan("A");
             int totalPrice = checkout.GetTotalPrice();
 
