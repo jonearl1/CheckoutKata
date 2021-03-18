@@ -15,7 +15,7 @@ namespace CheckoutKata
         }
 
         [Test]
-        public void CheckoutTestItemA()
+        public void SingleItemA()
         {
             _checkout.Scan("A");
             int totalPrice = _checkout.GetTotalPrice();
@@ -24,7 +24,7 @@ namespace CheckoutKata
         }
 
         [Test]
-        public void CheckoutTestItemB()
+        public void SingleItemB()
         {
             _checkout.Scan("B");
             int totalPrice = _checkout.GetTotalPrice();
@@ -32,7 +32,7 @@ namespace CheckoutKata
             Assert.AreEqual(30, totalPrice);
         }
         [Test]
-        public void CheckoutTestItemC()
+        public void SingleItemC()
         {
             _checkout.Scan("C");
             int totalPrice = _checkout.GetTotalPrice();
@@ -40,12 +40,33 @@ namespace CheckoutKata
             Assert.AreEqual(20, totalPrice);
         }
         [Test]
-        public void CheckoutTestItemD()
+        public void SingleItemD()
         {
             _checkout.Scan("D");
             int totalPrice = _checkout.GetTotalPrice();
 
             Assert.AreEqual(10, totalPrice);
+        }
+
+
+        [Test]
+        public void MultipleItemsSameType()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            int totalPrice = _checkout.GetTotalPrice();
+
+            Assert.AreEqual(100, totalPrice);
+        }
+
+        [Test]
+        public void MultipleItemsDifferentType()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("B");
+            int totalPrice = _checkout.GetTotalPrice();
+
+            Assert.AreEqual(80, totalPrice);
         }
     }
 }
