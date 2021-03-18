@@ -1,9 +1,8 @@
-using NUnit.Framework;
-using System;
 using CheckoutKata.Repository;
 using CheckoutKata.Service;
+using NUnit.Framework;
 
-namespace CheckoutKata
+namespace CheckoutKata.tests
 {
     public class CheckoutTests
     {
@@ -67,6 +66,17 @@ namespace CheckoutKata
             int totalPrice = _checkout.GetTotalPrice();
 
             Assert.AreEqual(80, totalPrice);
+        }
+
+        [Test]
+        public void DealItemA()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            int totalPrice = _checkout.GetTotalPrice();
+
+            Assert.AreEqual(130, totalPrice);
         }
     }
 }
