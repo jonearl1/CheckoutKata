@@ -19,10 +19,7 @@ namespace CheckoutKata.Repository
         }
         public Item GetItem(string sku)
         {
-            Item item = _items.FirstOrDefault(item => item.Sku == sku);
-            Console.WriteLine(item.Sku);
-            Console.WriteLine(item.Price);
-            return item;
+            return _items.FirstOrDefault(item => item.Sku == sku);
         }
     }
 }
