@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CheckoutKata.src.Models
+﻿namespace CheckoutKata.Models
 {
     class Item
     {
-        public Item(string sku, int cost)
+        public string Sku { get; set; }
+        public int Price { get; set; }
+        public Item(string sku, int price)
         {
             Sku = sku;
-            Cost = cost;
+            Price = price;
         }
-        public string Sku { get; set; }
-        public int Cost { get; set; }
     }
 }

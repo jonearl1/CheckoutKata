@@ -1,12 +1,9 @@
-﻿using CheckoutKata.src.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CheckoutKata.Models;
 
-namespace CheckoutKata.src.Repository
+namespace CheckoutKata.Repository
 {
     interface IItemRepository
     {
-        public Item getItem(string sku);
+        public Item GetItem(string sku);
     }
 }

@@ -1,33 +1,27 @@
-﻿using CheckoutKata.src.Models;
-using CheckoutKata.src.Repository;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Linq;
+using CheckoutKata.Models;
+using CheckoutKata.Repository;
 
-namespace CheckoutKata.src
+namespace CheckoutKata.Service
 {
     class Checkout : ICheckout
     {
-        IItemRepository itemRepository;
-        List<Item> items = new List<Item>();
+        private readonly IItemRepository _itemRepository;
+        private readonly List<Item> _items = new List<Item>();
 
         public Checkout(IItemRepository itemRepository)
         {
-            this.itemRepository = itemRepository;
+            this._itemRepository = itemRepository;
         }
         int ICheckout.GetTotalPrice()
         {
-            int totalPrice = 0;
-            foreach( Item item in items)
-            {
-                totalPrice += item.Cost;
-            }
-            return totalPrice;
+            return _items.Sum(item => item.Price);
         }
 
         void ICheckout.Scan(string sku)
         {
-            items.Add(itemRepository.getItem(sku));
+            _items.Add(_itemRepository.GetItem(sku));
         }
     }
 }
