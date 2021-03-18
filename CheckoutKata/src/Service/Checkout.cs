@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO.MemoryMappedFiles;
 using System.Linq;
+using System.Runtime.Serialization.Formatters;
 using CheckoutKata.Models;
 using CheckoutKata.Repository;
 
@@ -30,7 +32,23 @@ namespace CheckoutKata.Service
 
         public int GetTotalPrice()
         {
-            return (from entry in _items let item = _itemRepository.GetItem(entry.Key) select item.Price * entry.Value).Sum();
+            int totalPrice = 0;
+            foreach ((string entrySku, int entryCount) in _items)
+            {
+                Item item = _itemRepository.GetItem(entrySku);
+                int itemCount = entryCount;
+                foreach (Deal deal in item.Deals)
+                {
+                    while (itemCount >= deal.Number)
+                    {
+                        itemCount -= deal.Number;
+                        totalPrice += deal.Cost;
+                    }
+                }
+                totalPrice += item.Price * itemCount;
+            }
+
+            return totalPrice;
         }
     }
 }
