@@ -1,11 +1,23 @@
 [
   {
     "sku": "A",
-    "price": "50"
+    "price": "50",
+    "deals": [
+      {
+        "number": 3,
+        "cost": 130
+      }
+    ]
   },
   {
     "sku": "B",
-    "price": "30"
+    "price": "30",
+    "deals": [
+      {
+        "number": 2,
+        "cost": 45
+      }
+    ]
   },
   {
     "sku": "C",
