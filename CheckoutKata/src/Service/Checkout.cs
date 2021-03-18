@@ -31,8 +31,11 @@ namespace CheckoutKata.Service
             int totalPrice = 0;
             foreach ((string entrySku, int entryCount) in _items)
             {
-                Item item = _itemRepository.GetItem(entrySku);
                 int itemCount = entryCount;
+                Item item = _itemRepository.GetItem(entrySku);
+
+                if (item == null) continue;
+
                 foreach (Deal deal in item.Deals)
                 {
                     while (itemCount >= deal.Number)
@@ -41,6 +44,7 @@ namespace CheckoutKata.Service
                         totalPrice += deal.Cost;
                     }
                 }
+
                 totalPrice += item.Price * itemCount;
             }
 

@@ -126,5 +126,23 @@ namespace CheckoutKata.tests
 
             Assert.AreEqual(95, totalPrice);
         }
+
+        [Test]
+        public void EmptyCheckout()
+        {
+            int totalPrice = _checkout.GetTotalPrice();
+
+            Assert.AreEqual(0, totalPrice);
+        }
+
+        [Test]
+        public void InvalidItemSku()
+        {
+            _checkout.Scan("E");
+            _checkout.Scan("A");
+            int totalPrice = _checkout.GetTotalPrice();
+
+            Assert.AreEqual(50, totalPrice);
+        }
     }
 }
