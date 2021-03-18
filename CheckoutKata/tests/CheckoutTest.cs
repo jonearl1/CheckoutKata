@@ -10,7 +10,7 @@ namespace CheckoutKata.tests
         [SetUp]
         public void Setup()
         {
-            _checkout = new Checkout(new FileRepository());
+            _checkout = new Checkout(new FileItemRepository());
         }
 
         [Test]

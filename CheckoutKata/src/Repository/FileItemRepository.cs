@@ -8,10 +8,10 @@ using NUnit.Framework.Constraints;
 
 namespace CheckoutKata.Repository
 {
-    class FileRepository : IItemRepository
+    class FileItemRepository : IItemRepository
     {
-        private List<Item> _items;
-        public FileRepository()
+        private readonly List<Item> _items;
+        public FileItemRepository()
         {
             using StreamReader r = new StreamReader("resources//items.json");
             string json = r.ReadToEnd();
