@@ -1,10 +1,8 @@
-﻿using System;
-using CheckoutKata.Models;
+﻿using CheckoutKata.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using NUnit.Framework.Constraints;
 
 namespace CheckoutKata.Repository
 {

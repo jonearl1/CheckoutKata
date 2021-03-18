@@ -78,5 +78,53 @@ namespace CheckoutKata.tests
 
             Assert.AreEqual(130, totalPrice);
         }
+
+        [Test]
+        public void DealItemB()
+        {
+            _checkout.Scan("B");
+            _checkout.Scan("B");
+            int totalPrice = _checkout.GetTotalPrice();
+
+            Assert.AreEqual(45, totalPrice);
+        }
+
+        [Test]
+        public void DealDuplicateItemA()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            int totalPrice = _checkout.GetTotalPrice();
+
+            Assert.AreEqual(260, totalPrice);
+        }
+
+        [Test]
+        public void DealItemAOverFlow()
+        {
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            _checkout.Scan("A");
+            int totalPrice = _checkout.GetTotalPrice();
+
+            Assert.AreEqual(230, totalPrice);
+        }
+
+        [Test]
+        public void DealItemsAb()
+        {
+            _checkout.Scan("B");
+            _checkout.Scan("A");
+            _checkout.Scan("B");
+            int totalPrice = _checkout.GetTotalPrice();
+
+            Assert.AreEqual(95, totalPrice);
+        }
     }
 }

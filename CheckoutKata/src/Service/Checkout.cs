@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO.MemoryMappedFiles;
-using System.Linq;
-using System.Runtime.Serialization.Formatters;
+﻿using System.Collections.Generic;
 using CheckoutKata.Models;
 using CheckoutKata.Repository;
 
