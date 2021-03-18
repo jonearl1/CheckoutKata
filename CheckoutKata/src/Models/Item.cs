@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace CheckoutKata.Models
 {
@@ -9,11 +10,9 @@ namespace CheckoutKata.Models
 
         public List<Deal> Deals { get; set; }
 
-        public Item(string sku, int price, List<Deal> deals = null)
+        public Item()
         {
-            Sku = sku;
-            Price = price;
-            Deals = deals;
+            Deals = new List<Deal>();
         }
     }
 }
